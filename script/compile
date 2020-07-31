@@ -47,6 +47,7 @@ args=( "-jar" "$BABASHKA_JAR"
        "--initialize-at-build-time"
        "-H:Log=registerResource:"
        "-H:EnableURLProtocols=http,https"
+       "-H:ResourceConfigurationFiles=resources-config.json"
        "--enable-all-security-services"
        "-H:+JNI"
        "--verbose"
@@ -82,6 +83,7 @@ then
     export BABAHSKA_FEATURE_TRANSIT=false
     export BABASHKA_FEATURE_JAVA_TIME=false
     export BABASHKA_FEATURE_JAVA_NIO=false
+    export BABASHKA_FEATURE_DATOMIC_CLIENT=false
 fi
 
 "$GRAALVM_HOME/bin/native-image" "${args[@]}"
